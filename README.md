@@ -53,7 +53,8 @@ U `app/site.config.ts` pod `hero`:
 ## Privremene slike
 
 Dok ne stignu prave fotografije, `node scripts/make-placeholders.mjs` generiše SVG placeholder-e za sve modele koji nemaju pravu sliku (`--force` prepisuje postojeće).
-Slike brendiranih modela (Ray-Ban, Tom Ford) ne smiju se skidati sa tuđih sajtova zbog autorskih prava: slikaj svoje primjerke ili traži zvanične fotografije od distributera.
+**Privremeno:** slike Ray-Ban i Tom Ford modela su skinute sa zvaničnih sajtova proizvođača (`node scripts/fetch-brand-images.mjs`).
+To su njihove fotografije i koriste se samo dok ne stignu naše. Zamijeni ih svojim fotografijama kroz admin što prije.
 Kad ubaciš prave slike kroz admin, obriši stare `.svg` slike na modelu (dugme ✕ na slici).
 
 ## Deploy (Netlify)
