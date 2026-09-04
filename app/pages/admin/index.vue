@@ -254,7 +254,7 @@ const label = 'block text-xs font-semibold uppercase tracking-wider text-ink-600
             @click="select(p)"
           >
             <div class="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-sand-100">
-              <img v-if="p.images[0]" :src="p.images[0]" alt="" class="h-full w-full object-cover" />
+              <img v-if="p.images[0]" :src="p.images[0]" alt="" class="h-full w-full object-contain" />
             </div>
             <div class="min-w-0 flex-1">
               <p class="truncate text-sm font-semibold">{{ p.name || '(bez imena)' }}</p>
@@ -348,7 +348,7 @@ const label = 'block text-xs font-semibold uppercase tracking-wider text-ink-600
             <label :class="label">Slike</label>
             <div class="flex flex-wrap gap-3">
               <div v-for="(img, i) in selected.images" :key="img" class="group relative h-28 w-28 overflow-hidden rounded-xl border border-ink-900/10 bg-sand-100">
-                <img :src="img" alt="" class="h-full w-full object-cover" />
+                <img :src="img" alt="" class="h-full w-full object-contain" />
                 <span v-if="i === 0" class="absolute left-1 top-1 rounded bg-ink-900 px-1.5 py-0.5 text-[10px] font-semibold text-white">glavna</span>
                 <div class="absolute inset-x-0 bottom-0 flex justify-between bg-ink-900/70 px-1 py-0.5 text-white opacity-0 transition group-hover:opacity-100">
                   <button title="Lijevo" @click="moveImage(i, -1)">◀</button>

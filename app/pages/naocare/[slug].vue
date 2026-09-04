@@ -51,13 +51,13 @@ const specs = [
             :class="['aspect-square w-[72px] overflow-hidden border bg-sand-100', i === active ? 'border-ink-900' : 'border-transparent hover:border-ink-900/30']"
             @click="active = i"
           >
-            <img :src="img" :alt="`${product.name} ${i + 1}`" class="h-full w-full object-cover" />
+            <img :src="img" :alt="`${product.name} ${i + 1}`" class="h-full w-full object-contain p-1" />
           </button>
         </div>
         <div :class="['order-1 sm:order-2', product.images.length <= 1 && 'sm:col-span-2']">
           <SonaLightbox v-model:index="active" :images="product.images" :alt="product.name">
             <div class="aspect-square overflow-hidden bg-sand-100">
-              <img :src="product.images[active]" :alt="product.name" class="h-full w-full object-cover" />
+              <img :src="product.images[active]" :alt="product.name" class="h-full w-full object-contain p-6" />
             </div>
           </SonaLightbox>
         </div>

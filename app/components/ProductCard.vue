@@ -15,14 +15,14 @@ const wa = computed(() => orderLink(props.product, { origin }))
         :src="product.images[0]"
         :alt="product.name"
         loading="lazy"
-        class="h-full w-full object-cover transition-transform duration-700 ease-[var(--ease-sona)] group-hover:scale-105"
+        class="h-full w-full object-contain p-3 transition-transform duration-700 ease-[var(--ease-sona)] group-hover:scale-105"
       />
       <img
         v-if="product.images[1]"
         :src="product.images[1]"
         alt=""
         loading="lazy"
-        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        class="absolute inset-0 h-full w-full bg-sand-100 object-contain p-3 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
       />
       <div class="absolute left-2 top-2 flex flex-col gap-1">
         <span v-if="product.oldPrice" class="bg-ink-900 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">
