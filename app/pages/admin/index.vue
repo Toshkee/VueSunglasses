@@ -222,7 +222,7 @@ const label = 'block text-xs font-semibold uppercase tracking-wider text-ink-600
         <span class="rounded-full bg-sand-200 px-2.5 py-0.5 text-xs font-medium">samo lokalno</span>
 
         <div class="ml-auto flex flex-wrap items-center gap-2">
-          <span v-if="dirty" class="text-xs font-medium text-sun-600">Nesačuvane izmjene</span>
+          <span v-if="dirty" class="text-xs font-medium text-amber-600">Nesačuvane izmjene</span>
           <span v-else-if="unpublished" class="text-xs font-medium text-ink-600">{{ unpublished }} {{ unpublished === 1 ? 'izmjena čeka' : 'izmjena čekaju' }} objavu</span>
           <span v-else class="text-xs font-medium text-green-700">Sve objavljeno</span>
 

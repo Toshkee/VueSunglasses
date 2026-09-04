@@ -1,5 +1,275 @@
 [
   {
+    "uv400": true,
+    "inStock": true,
+    "featured": true,
+    "slug": "rb3928-asap-rocky-gold-green",
+    "name": "Ray-Ban RB3928 by A$AP Rocky",
+    "brand": "Ray-Ban",
+    "price": 219,
+    "gender": "unisex",
+    "shape": "kvadratne",
+    "frameColor": "Polirana zlatna (Arista), bez rama",
+    "lensColor": "Tamno zelena",
+    "polarized": false,
+    "description": "Prvi metalni model iz kolekcije koju je A$AP Rocky dizajnirao za Ray-Ban. Konstrukcija bez rama sa debljim staklima, podesivi nosni jastučići. Veličina 54-20.",
+    "images": [
+      "/images/products/rb3928-asap-rocky-gold-green/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": false,
+    "slug": "rb3928-asap-rocky-black-grey-polarized",
+    "name": "Ray-Ban RB3928 by A$AP Rocky",
+    "brand": "Ray-Ban",
+    "price": 239,
+    "gender": "unisex",
+    "shape": "kvadratne",
+    "frameColor": "Polirana crna, bez rama",
+    "lensColor": "Tamno siva polarizovana",
+    "polarized": true,
+    "description": "RB3928 u crnoj metalnoj varijanti sa polarizovanim tamno sivim staklima. Bez rama, debela stakla, podesivi nosni jastučići. Veličina 54-20.",
+    "images": [
+      "/images/products/rb3928-asap-rocky-black-grey-polarized/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": false,
+    "slug": "rb3928-asap-rocky-gold-blue-gradient",
+    "name": "Ray-Ban RB3928 by A$AP Rocky",
+    "brand": "Ray-Ban",
+    "price": 219,
+    "gender": "unisex",
+    "shape": "kvadratne",
+    "frameColor": "Polirana zlatna (Arista), bez rama",
+    "lensColor": "Plavi gradient / tamno siva",
+    "polarized": false,
+    "description": "RB3928 sa gradient staklima koja prelaze iz plave u tamno sivu. Zlatni metal bez rama, veličina 54-20.",
+    "images": [
+      "/images/products/rb3928-asap-rocky-gold-blue-gradient/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": false,
+    "slug": "rb3929-asap-rocky-gold-brown",
+    "name": "Ray-Ban RB3929 by A$AP Rocky",
+    "brand": "Ray-Ban",
+    "price": 219,
+    "gender": "unisex",
+    "shape": "okrugle",
+    "frameColor": "Polirana zlatna (Arista), bez rama",
+    "lensColor": "Tamno braon",
+    "polarized": false,
+    "description": "Ovalna verzija iz A$AP Rocky kolekcije. Lagani metal bez rama, tamno braon stakla, podesivi nosni jastučići. Veličina 54-20.",
+    "images": [
+      "/images/products/rb3929-asap-rocky-gold-brown/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": true,
+    "slug": "rb3929-asap-rocky-black-grey-polarized",
+    "name": "Ray-Ban RB3929 by A$AP Rocky",
+    "brand": "Ray-Ban",
+    "price": 239,
+    "gender": "unisex",
+    "shape": "okrugle",
+    "frameColor": "Polirana crna, bez rama",
+    "lensColor": "Tamno siva polarizovana",
+    "polarized": true,
+    "description": "Ovalne RB3929 u crnom metalu sa polarizovanim tamno sivim staklima. Bez rama, veličina 54-20.",
+    "images": [
+      "/images/products/rb3929-asap-rocky-black-grey-polarized/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": false,
+    "slug": "rb3929-asap-rocky-gold-violet-gradient",
+    "name": "Ray-Ban RB3929 by A$AP Rocky",
+    "brand": "Ray-Ban",
+    "price": 219,
+    "gender": "unisex",
+    "shape": "okrugle",
+    "frameColor": "Polirana zlatna (Arista), bez rama",
+    "lensColor": "Providna / tamno ljubičasta gradient",
+    "polarized": false,
+    "description": "Ovalne RB3929 sa gradient staklima od providne do tamno ljubičaste. Zlatni metal bez rama, veličina 54-20.",
+    "images": [
+      "/images/products/rb3929-asap-rocky-gold-violet-gradient/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": true,
+    "slug": "rb3025-aviator-classic-gold-g15",
+    "name": "Ray-Ban Aviator Classic RB3025",
+    "brand": "Ray-Ban",
+    "price": 169,
+    "gender": "unisex",
+    "shape": "aviator",
+    "frameColor": "Zlatna",
+    "lensColor": "G-15 zelena",
+    "polarized": false,
+    "description": "Original aviator iz 1937. Tanki zlatni metalni okvir i G-15 zelena stakla koja blokiraju 85% svjetlosti bez izobličenja boja.",
+    "images": [
+      "/images/products/rb3025-aviator-classic-gold-g15/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": false,
+    "slug": "rb2140-original-wayfarer-black-g15",
+    "name": "Ray-Ban Original Wayfarer RB2140",
+    "brand": "Ray-Ban",
+    "price": 169,
+    "gender": "unisex",
+    "shape": "wayfarer",
+    "frameColor": "Sjajna crna",
+    "lensColor": "G-15 zelena",
+    "polarized": false,
+    "description": "Najprepoznatljiviji oblik na svijetu. Acetatni okvir sa nagibom, G-15 zelena stakla. Model koji ide uz sve.",
+    "images": [
+      "/images/products/rb2140-original-wayfarer-black-g15/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": false,
+    "slug": "rb3016-clubmaster-black-gold",
+    "name": "Ray-Ban Clubmaster RB3016",
+    "brand": "Ray-Ban",
+    "price": 179,
+    "gender": "unisex",
+    "shape": "kvadratne",
+    "frameColor": "Crna / zlatna (browline)",
+    "lensColor": "G-15 zelena",
+    "polarized": false,
+    "description": "Retro browline kroj iz pedesetih: acetat gore, tanki metal dolje. Intelektualni, klasičan izgled.",
+    "images": [
+      "/images/products/rb3016-clubmaster-black-gold/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": false,
+    "slug": "rb3447-round-metal-gold-g15",
+    "name": "Ray-Ban Round Metal RB3447",
+    "brand": "Ray-Ban",
+    "price": 169,
+    "gender": "unisex",
+    "shape": "okrugle",
+    "frameColor": "Zlatna",
+    "lensColor": "G-15 zelena",
+    "polarized": false,
+    "description": "Okrugli metalni okvir inspirisan šezdesetim. Tanke drške, mali profil, G-15 zelena stakla.",
+    "images": [
+      "/images/products/rb3447-round-metal-gold-g15/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": false,
+    "slug": "rb3548-hexagonal-gold-g15",
+    "name": "Ray-Ban Hexagonal RB3548",
+    "brand": "Ray-Ban",
+    "price": 179,
+    "gender": "unisex",
+    "shape": "kvadratne",
+    "frameColor": "Zlatna",
+    "lensColor": "G-15 zelena, ravna stakla",
+    "polarized": false,
+    "description": "Šestougaoni okvir sa ravnim staklima. Moderan tvist na Round Metal formu.",
+    "images": [
+      "/images/products/rb3548-hexagonal-gold-g15/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": false,
+    "slug": "rb4165-justin-black-grey-gradient",
+    "name": "Ray-Ban Justin RB4165",
+    "brand": "Ray-Ban",
+    "price": 139,
+    "gender": "muski",
+    "shape": "wayfarer",
+    "frameColor": "Gumirana crna",
+    "lensColor": "Siva gradient",
+    "polarized": false,
+    "description": "Veći, moderniji wayfarer sa gumiranim mat okvirom. Najpovoljniji Ray-Ban u ponudi.",
+    "images": [
+      "/images/products/rb4165-justin-black-grey-gradient/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": true,
+    "slug": "tom-ford-ft1355-ethan-palladium-smoke",
+    "name": "Tom Ford Ethan-02 FT1355",
+    "brand": "Tom Ford",
+    "price": 449,
+    "gender": "unisex",
+    "shape": "kvadratne",
+    "frameColor": "Sjajni paladijum, bez rama",
+    "lensColor": "Dimljena gradient",
+    "polarized": false,
+    "description": "Minimalistički geometrijski model bez rama, trodijelna metalna konstrukcija sa sjajnim T logom. Proizvedeno u Italiji. Veličina 53-19-145.",
+    "images": [
+      "/images/products/tom-ford-ft1355-ethan-palladium-smoke/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": false,
+    "slug": "tom-ford-ft1355-ethan-gold-brown",
+    "name": "Tom Ford Ethan-02 FT1355",
+    "brand": "Tom Ford",
+    "price": 449,
+    "gender": "unisex",
+    "shape": "kvadratne",
+    "frameColor": "Sjajna tamno zlatna, bez rama",
+    "lensColor": "Braon",
+    "polarized": false,
+    "description": "Ethan-02 u tamno zlatnom metalu sa braon staklima. Bez rama, T logo sa strane. Proizvedeno u Italiji.",
+    "images": [
+      "/images/products/tom-ford-ft1355-ethan-gold-brown/1.svg"
+    ]
+  },
+  {
+    "uv400": true,
+    "inStock": true,
+    "featured": false,
+    "slug": "tom-ford-ft1355-ethan-rose-gold-green",
+    "name": "Tom Ford Ethan-02 FT1355",
+    "brand": "Tom Ford",
+    "price": 449,
+    "gender": "unisex",
+    "shape": "kvadratne",
+    "frameColor": "Sjajna roze zlatna, bez rama",
+    "lensColor": "Zelena gradient",
+    "polarized": false,
+    "description": "Ethan-02 u roze zlatnom metalu sa zelenim gradient staklima. Bez rama, proizvedeno u Italiji.",
+    "images": [
+      "/images/products/tom-ford-ft1355-ethan-rose-gold-green/1.svg"
+    ]
+  },
+  {
     "slug": "aviator-gold-classic",
     "name": "Aviator Gold Classic",
     "brand": "Vue",
@@ -11,7 +281,7 @@
     "polarized": true,
     "uv400": true,
     "inStock": true,
-    "featured": true,
+    "featured": false,
     "images": [
       "/images/products/aviator-gold-classic/1.svg"
     ],
@@ -29,7 +299,7 @@
     "polarized": false,
     "uv400": true,
     "inStock": true,
-    "featured": true,
+    "featured": false,
     "images": [
       "/images/products/wayfarer-black-matte/1.svg"
     ],
@@ -47,7 +317,7 @@
     "polarized": false,
     "uv400": true,
     "inStock": true,
-    "featured": true,
+    "featured": false,
     "images": [
       "/images/products/round-tortoise/1.svg"
     ],
@@ -84,7 +354,7 @@
     "polarized": true,
     "uv400": true,
     "inStock": true,
-    "featured": true,
+    "featured": false,
     "images": [
       "/images/products/sport-wrap-blue/1.svg"
     ],

@@ -21,6 +21,14 @@ export const site = {
 
   currency: '€',
 
+  // Hero na početnoj: ako postoji video, pušta se u pozadini (bez zvuka, u petlji),
+  // a slika služi kao poster / rezerva dok se video učita ili ako ga nema.
+  // Ubaci fajlove u /public/videos/hero.mp4 i /public/images/hero.jpg pa promijeni putanje.
+  hero: {
+    video: '' as string, // npr. '/videos/hero.mp4'
+    image: '/images/hero.svg',
+  },
+
   // Preuzimanje i dostava
   delivery: {
     pickup: 'Lično preuzimanje u Podgorici',

@@ -1,25 +1,35 @@
 /**
  * Pravi privremene SVG slike za proizvode dok ne stignu prave fotografije.
- * Pokreni: node scripts/make-placeholders.mjs
- * Kad ubaciš prave slike (1.jpg), samo promijeni putanju u app/data/products.ts.
+ * Pokreni: node scripts/make-placeholders.mjs            (samo modeli bez slike)
+ *          node scripts/make-placeholders.mjs --force    (prepiši sve placeholder-e)
+ * Prave slike dodaješ kroz admin (http://localhost:3000/admin).
  */
-import { mkdirSync, writeFileSync, existsSync } from 'node:fs'
+import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-const products = [
-  ['aviator-gold-classic', '#d4a017', '#2f6b4f', 'aviator'],
-  ['wayfarer-black-matte', '#1a1a1a', '#111', 'wayfarer'],
-  ['round-tortoise', '#7a4a1e', '#8b5a2b', 'round'],
-  ['cat-eye-rose', '#e8a0b4', '#f2b8c6', 'cateye'],
-  ['sport-wrap-blue', '#111', '#2b6cb0', 'sport'],
-  ['square-havana', '#6b3f1d', '#2f6b4f', 'square'],
-  ['oversize-black-gloss', '#0a0a0a', '#555', 'oversize'],
-  ['aviator-silver-mirror', '#b8bcc4', '#c9ced6', 'aviator'],
-  ['round-gold-clear', '#d4a017', '#c7a87a', 'round'],
-  ['wayfarer-crystal', '#d9dde3', '#7a7f87', 'wayfarer'],
-  ['sport-wrap-red', '#111', '#c53030', 'sport'],
-  ['cat-eye-black', '#111', '#111', 'cateye'],
-]
+const force = process.argv.includes('--force')
+const root = join(process.cwd(), 'public', 'images')
+const products = JSON.parse(readFileSync(join(process.cwd(), 'app', 'data', 'products.json'), 'utf8'))
+
+const BG = '#f4f4f5'
+
+// Boja okvira / stakla iz opisa boje (dovoljno dobro za placeholder)
+function colorFrom(text, fallback) {
+  const t = (text || '').toLowerCase()
+  if (/zlat|gold/.test(t)) return '#c9a227'
+  if (/srebr|silver|metal/.test(t)) return '#b8bcc4'
+  if (/crn|black|mat/.test(t)) return '#111111'
+  if (/havana|tortoise|smeđ|smedj|braon|brown/.test(t)) return '#6b3f1d'
+  if (/roze|pink/.test(t)) return '#e8a0b4'
+  if (/plav|blue/.test(t)) return '#2b6cb0'
+  if (/crven|red/.test(t)) return '#c53030'
+  if (/zelen|green|g-15/.test(t)) return '#2f6b4f'
+  if (/siv|grey|gray|dim/.test(t)) return '#6b7280'
+  if (/provid|clear|kristal|crystal|transparent/.test(t)) return '#d9dde3'
+  return fallback
+}
+
+const shapeMap = { aviator: 'aviator', okrugle: 'round', 'cat-eye': 'cateye', sportske: 'sport', oversize: 'oversize', kvadratne: 'square', wayfarer: 'wayfarer' }
 
 function lens(shape, x, y, fill) {
   switch (shape) {
@@ -33,49 +43,59 @@ function lens(shape, x, y, fill) {
   }
 }
 
-function svg(frame, glass, shape) {
+function svg(frame, glass, shape, rimless = false, bg = BG) {
   const w = 800, h = 800, cy = 400, l = 245, r = 555
+  const rim = rimless ? 3 : 12
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}">
-  <rect width="${w}" height="${h}" fill="#f4ede0"/>
+  <rect width="${w}" height="${h}" fill="${bg}"/>
   <ellipse cx="400" cy="560" rx="260" ry="26" fill="#000" opacity="0.08"/>
-  <g stroke="${frame}" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="${frame}" stroke-width="${rimless ? 8 : 14}" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path d="M${l + 80} ${cy - 20} q${(r - l) / 2 - 80} -40 ${r - l - 160} 0"/>
     <path d="M${l - 80} ${cy - 30} l-60 -20"/>
     <path d="M${r + 80} ${cy - 30} l60 -20"/>
   </g>
   <g opacity="0.92">${lens(shape, l, cy, glass)}${lens(shape, r, cy, glass)}</g>
-  <g stroke="${frame}" stroke-width="12" fill="none">${lens(shape, l, cy, 'none')}${lens(shape, r, cy, 'none')}</g>
+  <g stroke="${frame}" stroke-width="${rim}" fill="none">${lens(shape, l, cy, 'none')}${lens(shape, r, cy, 'none')}</g>
   <path d="M${l - 40} ${cy - 30} q30 -20 60 0" stroke="#fff" stroke-width="6" fill="none" opacity="0.5" stroke-linecap="round"/>
   <path d="M${r - 40} ${cy - 30} q30 -20 60 0" stroke="#fff" stroke-width="6" fill="none" opacity="0.5" stroke-linecap="round"/>
 </svg>`
 }
 
-const root = join(process.cwd(), 'public', 'images')
-for (const [slug, frame, glass, shape] of products) {
-  const dir = join(root, 'products', slug)
+let made = 0
+for (const p of products) {
+  const dir = join(root, 'products', p.slug)
   mkdirSync(dir, { recursive: true })
   const file = join(dir, '1.svg')
-  if (!existsSync(file)) writeFileSync(file, svg(frame, glass, shape))
+  const hasRealImage = (p.images || []).some(i => !i.endsWith('.svg'))
+  if (hasRealImage) continue
+  if (existsSync(file) && !force) continue
+  const rimless = /bez rama|rimless/i.test(`${p.frameColor} ${p.description}`)
+  writeFileSync(file, svg(colorFrom(p.frameColor, '#111'), colorFrom(p.lensColor, '#333'), shapeMap[p.shape] || 'wayfarer', rimless))
+  made++
 }
 
-const hero = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5b942"/><stop offset="1" stop-color="#e8dcc5"/></linearGradient></defs>
-  <rect width="800" height="1000" fill="url(#g)"/>
-  <circle cx="400" cy="330" r="170" fill="#fff" opacity="0.5"/>
-  <g transform="translate(0,120)">${svg('#0f172a', '#1e293b', 'aviator').replace(/<svg[^>]*>|<\/svg>|<rect width="800" height="800" fill="#f4ede0"\/>/g, '')}</g>
-  <text x="400" y="900" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#0f172a">Ovdje ide tvoja fotografija</text>
+// Hero: tamna crno-bijela pozadina, dok ne stigne prava fotografija ili video
+const hero = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0a0a"/><stop offset="1" stop-color="#3a3a3a"/></linearGradient>
+    <radialGradient id="r" cx="0.7" cy="0.4" r="0.5"><stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <rect width="1600" height="1000" fill="url(#r)"/>
+  <g transform="translate(700,120) scale(1.1)">${svg('#f4f4f5', '#1a1a1a', 'wayfarer', false, 'none').replace(/<svg[^>]*>|<\/svg>|<rect width="800" height="800" fill="none"\/>/g, '')}</g>
+  <text x="1100" y="930" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" letter-spacing="6" fill="#ffffff" opacity="0.5">OVDJE IDE FOTOGRAFIJA ILI VIDEO</text>
 </svg>`
 writeFileSync(join(root, 'hero.svg'), hero)
 
 const about = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <rect width="800" height="600" fill="#e8dcc5"/>
-  <text x="400" y="300" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#0f172a">Fotografija radnje / vas dvojice</text>
+  <rect width="800" height="600" fill="#e4e4e7"/>
+  <text x="400" y="300" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" letter-spacing="4" fill="#0a0a0a" opacity="0.6">FOTOGRAFIJA RADNJE</text>
 </svg>`
 writeFileSync(join(root, 'o-nama.svg'), about)
 
 const favicon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#0f172a"/>
-  <g transform="translate(0,16)" stroke="#f5b942" stroke-width="3" stroke-linecap="round" fill="#f5b942" fill-opacity="0.2">
+  <rect width="64" height="64" fill="#0a0a0a"/>
+  <g transform="translate(0,16)" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="#ffffff" fill-opacity="0.15">
     <path d="M6 12h52" fill="none"/>
     <path d="M10 12c0 8 3 14 10 14s10-6 10-14"/>
     <path d="M34 12c0 8 3 14 10 14s10-6 10-14"/>
@@ -83,4 +103,4 @@ const favicon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
 </svg>`
 writeFileSync(join(process.cwd(), 'public', 'favicon.svg'), favicon)
 
-console.log('Placeholder slike napravljene u public/images/')
+console.log(`Placeholder slike: ${made} novih proizvoda, hero, o-nama i favicon u public/images/`)

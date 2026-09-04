@@ -18,20 +18,18 @@ function move(e: PointerEvent) {
 <template>
   <div
     ref="el"
-    class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+    class="relative overflow-hidden"
     @pointermove="move"
     @pointerenter="active = true"
     @pointerleave="active = false"
   >
+    <slot />
     <div
       class="pointer-events-none absolute inset-0 transition-opacity duration-300"
       :style="{
         opacity: active ? 1 : 0,
-        background: `radial-gradient(240px circle at ${x}% ${y}%, rgba(245,185,66,0.18), transparent 60%)`,
+        background: `radial-gradient(320px circle at ${x}% ${y}%, rgba(255,255,255,0.14), transparent 60%)`,
       }"
     />
-    <div class="relative p-6">
-      <slot />
-    </div>
   </div>
 </template>

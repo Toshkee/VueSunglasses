@@ -42,9 +42,18 @@ Možeš ih mijenjati i ručno ako hoćeš: `slug` mora biti jedinstven, mala slo
 U `app/site.config.ts` postavi `whatsappNumber` u međunarodnom formatu bez plusa i razmaka, npr. `38267123456`.
 Svako dugme "Naruči" otvara WhatsApp sa gotovom porukom koja sadrži ime modela, cijenu i link.
 
+## Hero (video ili slika u pozadini)
+
+U `app/site.config.ts` pod `hero`:
+
+- `video`: putanja do mp4 fajla, npr. `/videos/hero.mp4` (ubaci fajl u `public/videos/`). Pušta se bez zvuka, u petlji.
+  Preporuka: 1920x1080, 10 do 20 sekundi, ispod 8 MB, crno-bijelo ili tamno.
+- `image`: slika koja se prikazuje dok se video učita, ili umjesto videa ako `video` ostane prazan.
+
 ## Privremene slike
 
-Dok ne stignu prave fotografije, koristi se `node scripts/make-placeholders.mjs` koji generiše SVG placeholder-e.
+Dok ne stignu prave fotografije, `node scripts/make-placeholders.mjs` generiše SVG placeholder-e za sve modele koji nemaju pravu sliku (`--force` prepisuje postojeće).
+Slike brendiranih modela (Ray-Ban, Tom Ford) ne smiju se skidati sa tuđih sajtova zbog autorskih prava: slikaj svoje primjerke ili traži zvanične fotografije od distributera.
 Kad ubaciš prave slike kroz admin, obriši stare `.svg` slike na modelu (dugme ✕ na slici).
 
 ## Deploy (Netlify)

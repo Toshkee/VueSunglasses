@@ -2,23 +2,24 @@
 /**
  * Port Sona UI "marquee": beskonačna traka sadržaja. Čist CSS, pauza na hover.
  */
-withDefaults(defineProps<{ items: string[]; duration?: number }>(), { duration: 30 })
+withDefaults(defineProps<{ items: string[]; duration?: number; dark?: boolean }>(), { duration: 30, dark: false })
 </script>
 
 <template>
-  <div class="group relative overflow-hidden border-y border-ink-900/10 bg-sand-100 py-3" role="marquee">
-    <div class="absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-sand-100 to-transparent" />
-    <div class="absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-sand-100 to-transparent" />
-    <div class="marquee-track flex w-max gap-10 group-hover:[animation-play-state:paused]" :style="{ animationDuration: `${duration}s` }">
+  <div
+    :class="['group relative overflow-hidden', dark ? 'bg-ink-900 text-white' : 'border-y border-ink-900/10 bg-sand-100 text-ink-600']"
+    role="marquee"
+  >
+    <div class="marquee-track flex w-max group-hover:[animation-play-state:paused]" :style="{ animationDuration: `${duration}s` }">
       <template v-for="n in 2" :key="n">
         <span
           v-for="(item, i) in items"
           :key="`${n}-${i}`"
-          class="flex items-center gap-10 text-xs font-semibold uppercase tracking-[0.2em] text-ink-600"
+          class="flex items-center gap-8 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em]"
           :aria-hidden="n === 2"
         >
           {{ item }}
-          <span class="h-1.5 w-1.5 rounded-full bg-sun-500" />
+          <span :class="['h-1 w-1', dark ? 'bg-white/60' : 'bg-ink-900/40']" />
         </span>
       </template>
     </div>
