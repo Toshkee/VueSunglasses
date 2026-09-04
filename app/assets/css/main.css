@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+
+  --color-sand-50: #fbf8f2;
+  --color-sand-100: #f4ede0;
+  --color-sand-200: #e8dcc5;
+  --color-sand-300: #d6c3a0;
+
+  --color-ink-900: #0f172a;
+  --color-ink-800: #1e293b;
+  --color-ink-600: #475569;
+  --color-ink-400: #94a3b8;
+
+  --color-sun-400: #f5b942;
+  --color-sun-500: #e8a317;
+  --color-sun-600: #c98708;
+
+  --color-wa: #25d366;
+  --color-wa-dark: #1ebe5b;
+
+  /* Preuzeto iz Sona UI theming-a: jedan radius token, meke sjenke */
+  --radius-card: 1rem;
+  --ease-sona: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-sand-50);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@utility container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-6xl);
+  padding-inline: 1rem;
+  @variant sm { padding-inline: 1.5rem; }
+  @variant lg { padding-inline: 2rem; }
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  transition: background-color 200ms, border-color 200ms, transform 150ms var(--ease-sona);
+  &:active { transform: scale(0.97); }
+  &:focus { outline: none; }
+  &:focus-visible { outline: 2px solid var(--color-ink-900); outline-offset: 2px; }
+}
+
+@utility btn-primary {
+  @apply btn;
+  background-color: var(--color-ink-900);
+  color: white;
+  &:hover { background-color: var(--color-ink-800); }
+}
+
+@utility btn-secondary {
+  @apply btn;
+  background-color: white;
+  color: var(--color-ink-900);
+  border: 1px solid color-mix(in oklab, var(--color-ink-900) 20%, transparent);
+  &:hover { border-color: var(--color-ink-900); }
+}
+
+@utility btn-wa {
+  @apply btn;
+  background-color: var(--color-wa);
+  color: white;
+  &:hover { background-color: var(--color-wa-dark); }
+  &:focus-visible { outline-color: var(--color-wa); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
