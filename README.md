@@ -20,17 +20,22 @@ npm run preview    # pregled generisanog sajta
 | Šta                                       | Fajl                          |
 | ----------------------------------------- | ----------------------------- |
 | Broj telefona, adresa, radno vrijeme, dostava | `app/site.config.ts`      |
-| Proizvodi (naočare)                        | `app/data/products.ts`        |
+| Proizvodi (naočare)                        | `app/data/products.json` (ili /admin) |
 | Slike proizvoda                            | `public/images/products/<slug>/` |
 | Boje, fontovi                              | `app/assets/css/main.css`     |
 | Stranice                                   | `app/pages/`                  |
 
-## Dodavanje novih naočara
+## Admin panel (dodavanje i izmjena naočara)
 
-1. Napravi folder `public/images/products/<slug>/` i ubaci slike (`1.jpg`, `2.jpg`, ...). Kvadratne, min. 1000x1000 px.
-2. U `app/data/products.ts` dodaj novi objekat u niz `products` (kopiraj postojeći i izmijeni).
-3. `slug` mora biti jedinstven, mala slova, bez razmaka (npr. `aviator-gold-classic`).
-4. `inStock: false` prikazuje "Rasprodato", `featured: true` stavlja model na početnu.
+1. `npm run dev`
+2. Otvori http://localhost:3000/admin
+3. Dodaj / izmijeni modele, ubaci slike, klikni **Sačuvaj**.
+4. Klikni **Objavi na sajt**: to uradi `git commit` + `git push`, a hosting (Netlify) sam napravi novu verziju sajta.
+
+Admin postoji samo lokalno u dev modu. U produkcijskom build-u ga nema, pa niko sa interneta ne može da mu pristupi.
+
+Podaci se čuvaju u `app/data/products.json`, slike u `public/images/products/<slug>/`.
+Možeš ih mijenjati i ručno ako hoćeš: `slug` mora biti jedinstven, mala slova, bez razmaka.
 
 ## WhatsApp
 
@@ -40,7 +45,7 @@ Svako dugme "Naruči" otvara WhatsApp sa gotovom porukom koja sadrži ime modela
 ## Privremene slike
 
 Dok ne stignu prave fotografije, koristi se `node scripts/make-placeholders.mjs` koji generiše SVG placeholder-e.
-Kad ubaciš prave slike, promijeni putanje u `products.ts` (npr. `1.svg` -> `1.jpg`).
+Kad ubaciš prave slike kroz admin, obriši stare `.svg` slike na modelu (dugme ✕ na slici).
 
 ## Deploy (Netlify)
 

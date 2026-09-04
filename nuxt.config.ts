@@ -36,6 +36,13 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: ['/'],
+      ignore: ['/admin', '/api/admin'],
     },
+  },
+
+  // Admin panel (/admin + /api/admin/*) postoji samo u dev modu.
+  // U produkcijskom build-u se ti fajlovi uopšte ne uključuju.
+  $production: {
+    ignore: ['app/pages/admin/**', 'app/layouts/admin.vue', 'server/api/admin/**', 'server/utils/admin.ts'],
   },
 })
